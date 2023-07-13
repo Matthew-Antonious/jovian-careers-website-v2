@@ -1,0 +1,26 @@
+import mysql.connector
+
+# Establish a connection
+connection = mysql.connector.connect(
+    user="your_username",
+    password="your_password",
+    host="your_host",
+    database="your_database"
+)
+
+# Create a cursor
+cursor = connection.cursor()
+
+# Execute an SQL statement
+cursor.execute("SELECT * FROM your_table")
+
+# Fetch all rows from the result
+rows = cursor.fetchall()
+
+# Process the fetched rows
+for row in rows:
+    print(row)
+
+# Close the cursor and connection
+cursor.close()
+connection.close()
