@@ -5,7 +5,7 @@ import os
 # Load the env variables
 load_dotenv()
 
-# Replace the placeholders with your actual values
+# Replace the placeholders with your actual values os.environ uses a default value if the key is not found
 user = os.getenv("DB_USER")
 password = os.getenv("DB_PASSWORD")
 host = os.getenv("DB_HOST")
@@ -29,7 +29,14 @@ def load_jobs_from_db():
     result_dicts = []
     for row in cursor.fetchall():
         result_dicts.append(dict(row))
-        
     return result_dicts
 
+def load_job_from_db(job_id):
+    # connection.reconnect()
+    query = "SELECT * FROM jobs WHERE id = %s"
+    cursor.execute(query, (job_id,))
+    row = cursor.fetchone()
+    if row:
+        return dict(row)
+    return None
 

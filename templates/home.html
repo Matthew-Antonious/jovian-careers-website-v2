@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Jovian Careers</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        {% include 'bootstrap.html' %}
         <!-- for interactive stuff on website use bootstrap.js
             <style>
             .container {
@@ -43,21 +41,14 @@
         <style>
             .container-sm {
                 min-width: 320px;
-            }
-            #banner {
-                height: 360px;
-                width: 100%;
-                object-fit: cover;
-                margin-bottom: 16px;
-            }
-            
+            }            
         </style>
     </head>
     <body>
         {% include 'nav.html' %}
-        <img class="img-fluid no-scaling-image" id="banner" src="static/careers.jpg">
+        {% include 'banner.html' %}
         <div class="container">
-            <h1 class="text-center mt-2 mb-4" style="padding: 10px;">{{company_name}} Careers</h1>
+            <h1 class="text-center mt-2 mb-4" style="padding: 10px;">Jovian Careers</h1>
             <!-- height="320px" width="50%vw"  -->
             <h2 class="text-center mt-2 mb-4">About Jovian</h2>
             <div class="row" style="margin-bottom:16px">
