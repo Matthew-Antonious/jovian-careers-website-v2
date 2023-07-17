@@ -1,4 +1,4 @@
-3:55
+4:15.30
 
 3:02 for end for DB info.
 
@@ -51,3 +51,18 @@ if __name__ == "__main__":
 @app.route("/jobs")  / REST API/ JSON API/ Backend API
 def list_jobs():
     return jsonify(JOBS)
+
+
+@app.route("/job/<id>/apply", methods=['post'])
+def apply_to_job(id):
+    data = request.form
+    # store this in the DB
+    # send an email
+    # display an acknowledgement
+    return jsonify(data) jsonify is testing to make sure we received the form data.
+
+The sqlAlchemy code that I changed to use mysql.connect******
+
+    def add_application_to_db(job_id, data):
+with engine.connect() as conn:
+query = text("INSERT INTO applications (job_id, full_name, email, linkedin_url, education, experience, resume_url) VALUES (:job_id, :full_name, :email, :linkedin_url, :education, :experience, :resume_url)")
