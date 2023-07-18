@@ -23,23 +23,20 @@ connection = mysql.connector.connect(
 cursor = connection.cursor(dictionary=True)
 
 def load_jobs_from_db():
-    #connection.reconnect()
-    cursor.execute("SELECT * FROM jobs")
-    #cursor = connection.cursor(dictionary=True)   
+    cursor.execute("SELECT * FROM jobs")   
     result_dicts = []
     for row in cursor.fetchall():
         result_dicts.append(dict(row))
     return result_dicts
 
 def load_job_from_db(job_id):
-    # connection.reconnect()
     query = "SELECT * FROM jobs WHERE id = %s"
     cursor.execute(query, (job_id,))
     row = cursor.fetchone()
     if row:
         return dict(row)
     return None
-#cursor, connection, 
+
 def add_application_to_db(job_id, data):
     query = "INSERT INTO applications (job_id, full_name, email, linkedin_url, education, work_experience, resume_url) VALUES (%s, %s, %s, %s, %s, %s, %s)"
     values = (job_id, data['full_name'], data['email'], data['linkedin_url'], data['education'], data['work_experience'], data['resume_url'])

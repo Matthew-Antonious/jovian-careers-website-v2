@@ -1,6 +1,5 @@
 from flask import Flask, render_template, jsonify, request
 from database import load_jobs_from_db, load_job_from_db, add_application_to_db, mysql
-#import os
 
 app = Flask(__name__)
     
@@ -33,24 +32,7 @@ def apply_to_job(id):
     # store this in the DB
     # send an email
     # display an acknowledgement
-    #user = os.getenv("DB_USER")
-    #password = os.getenv("DB_PASSWORD")
-    #host = os.getenv("DB_HOST")
-    #dbname = os.getenv("DB_NAME")
-    
-    # Establish the connection
-    #connection = mysql.connector.connect(
-    #    user=user,
-    #    password=password,
-    #    host=host,
-    #    database=dbname
-    #)
-
-    # Create a cursor with dictionary=True
-    #cursor = connection.cursor(dictionary=True)
     add_application_to_db(id, data)
-    #cursor.close()
-    #connection.close()
     return render_template('application_submitted.html',
                            application=data,
                            job=job)
